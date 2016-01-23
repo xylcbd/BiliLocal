@@ -72,7 +72,7 @@ format(AV_PIX_FMT_NONE), size(size)
 	if (av_image_fill_linesizes(width, format, size.width()) < 0)
 		return;
 	const AVPixFmtDescriptor *desc = av_pix_fmt_desc_get(format);
-	if (!desc || desc->flags&PIX_FMT_HWACCEL)
+    if (!desc || desc->flags& AV_PIX_FMT_FLAG_HWACCEL) //PIX_FMT_HWACCEL
 		return;
 	int i, p[4] = { 0 };
 	for (i = 0; i < 4; i++)

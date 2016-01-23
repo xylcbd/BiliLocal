@@ -112,7 +112,9 @@ DEFINES += \
     RENDER_OPENGL
 
 INCLUDEPATH += \
-    D:/App/Programming/include
+    3rd/vlc/include \
+        3rd/openssl/include \
+        3rd/ffmpeg-20160119-git-cc83177-win32-dev/include
 
 LIBS += \
     -llibeay32 \
@@ -122,14 +124,18 @@ LIBS += \
 DEFINES += \
     RENDER_RASTER
 
-DEPENDPATH += \
-    -LD:/App/Programming/lib
+LIBPATH += \
+    D:/opensource/BiliLocal/3rd/vlc/lib \
+        D:/opensource/BiliLocal/3rd/openssl/lib \
+        D:/opensource/BiliLocal/3rd/ffmpeg-20160119-git-cc83177-win32-dev/lib
 }
 else{
-DEPENDPATH += \
-    -LD:/App/Programming/lib/amd64
+LIBPATH += \
+    D:/App/Programming/lib/amd64
 }
 }
+
+LIBS += -LLIBPATH
 
 macx{
 DEFINES += \
@@ -148,8 +154,8 @@ HEADERS += \
     src/Player/VPlayer.h
 
 LIBS += \
-    -lvlc \
-    -lvlccore
+    -llibvlc \
+    -llibvlccore
 }
 
 contains(DEFINES, BACKEND_QMM){
